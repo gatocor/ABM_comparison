@@ -3,5 +3,3 @@ packages/*
 
 results/*
 !results/.gitkeep
-
-!/simulations_code/*
