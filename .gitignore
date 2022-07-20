@@ -1,0 +1,8 @@
+packages/*
+!packages/.gitkeep
+
+results/*
+!results/.gitkeep
+
+results/*/*
+!results/*/.gitkeep
