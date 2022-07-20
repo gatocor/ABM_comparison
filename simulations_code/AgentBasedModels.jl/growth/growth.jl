@@ -1,15 +1,16 @@
 using AgentBasedModels
 using GLMakie
 
+#Model constants
 const repulsion_force = 1
 const diameter = 1
 const dt = .1
 const β = 0.1
 const extent = (102.,102.,102.)
 const n_walkers = 1
-const tMax = 500
-const dtSave = 10
-const div_rate = 0.01*dt
+const tMax = 1
+const dtSave = .1
+const div_rate = 20*dt
 
 model = @agent(3,
     [div_rate,r,repulsion_force,β]::Global,
@@ -44,7 +45,7 @@ model = @agent(3,
 
     #Make the division update rule
     UpdateLocal=begin
-        if Uniform(0,1) < div_rate
+        if rand() < div_rate
             px = Normal(0,1)
             py = Normal(0,1)
             pz = Normal(0,1)
@@ -70,9 +71,9 @@ com.β = β
 steps = Int64(round(tMax/dtSave))
 for step in range(1,steps,step=1)
 
-    @time comt = model.evolve(com, dt = dt, dtSave = dtSave, tMax = dtSave*step, nMax = 10000)
+    @time comt = model.evolve(com, dt = dt, dtSave = dtSave, tMax = dtSave, nMax = 10000)
     global com = comt[end]
-    println("Global Time: " , step*dtSave/dt , "/" , tMax/dt)
+    println("Global Time: " , com.t , "/" , tMax)
     println("N agents: " , com.N , "\n")
 
 end
