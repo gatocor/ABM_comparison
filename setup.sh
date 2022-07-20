@@ -1,10 +1,12 @@
 #!/bin/bash
 
+rm -r packages/*
+
 echo "Downloading PhysiCell"
-rm PhysiCell_V.1.10.4.zip
-wget https://github.com/MathCancer/PhysiCell/releases/download/1.10.4/PhysiCell_V.1.10.4.zip
-unzip PhysiCell_V.1.10.4.zip
-rm PhysiCell_V.1.10.4.zip
+rm PhysiCell_V.1.7.1.zip
+wget https://github.com/MathCancer/PhysiCell/releases/download/1.7.1/PhysiCell_V.1.7.1.zip
+unzip PhysiCell_V.1.7.1.zip
+rm PhysiCell_V.1.7.1.zip
 mv PhysiCell packages 
 cp -r simulations_code/PhysiCell/projects packages/PhysiCell
 rm -r PhysiCell
