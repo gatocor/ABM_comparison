@@ -4,5 +4,4 @@ packages/*
 results/*
 !results/.gitkeep
 
-results/*/*
-!results/*/.gitkeep
+!/simulations_code/*

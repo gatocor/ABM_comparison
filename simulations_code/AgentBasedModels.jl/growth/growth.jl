@@ -71,7 +71,7 @@ com.β = β
 steps = Int64(round(tMax/dtSave))
 for step in range(1,steps,step=1)
 
-    @time comt = model.evolve(com, dt = dt, dtSave = dtSave, tMax = dtSave, nMax = 10000)
+    @time comt = model.evolve(com, dt = dt, dtSave = dtSave, tMax = dtSave, nMax = 500)
     global com = comt[end]
     println("Global Time: " , com.t , "/" , tMax)
     println("N agents: " , com.N , "\n")
