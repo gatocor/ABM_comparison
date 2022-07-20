@@ -8,9 +8,9 @@ const dt = .1
 const β = 0.1
 const extent = (102.,102.,102.)
 const n_walkers = 1
-const tMax = 1
-const dtSave = .1
-const div_rate = 20*dt
+const tMax = 5000
+const dtSave = 100
+const div_rate = 0.001*dt
 
 model = @agent(3,
     [div_rate,r,repulsion_force,β]::Global,
@@ -67,11 +67,12 @@ com.div_rate = div_rate
 com.r = diameter/2
 com.repulsion_force = repulsion_force
 com.β = β
+com.t = 0.
 
 steps = Int64(round(tMax/dtSave))
 for step in range(1,steps,step=1)
 
-    @time comt = model.evolve(com, dt = dt, dtSave = dtSave, tMax = dtSave, nMax = 500)
+    @time comt = model.evolve(com, dt = dt, dtSave = dtSave, tMax = com.t+dtSave, nMax = 4000)
     global com = comt[end]
     println("Global Time: " , com.t , "/" , tMax)
     println("N agents: " , com.N , "\n")
